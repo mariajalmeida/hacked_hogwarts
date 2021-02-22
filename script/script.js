@@ -66,18 +66,32 @@ function transcribeData(students) {
         allStudents.push(student);
     });
 
-    insertData();
+    displayList(allStudents);
 }
 
-function insertData() {
-    // console.table(allStudents);
+// filter by house
+function filteredList() {
+    const filtered = allStudents.filter(isRavenclaw);
 
-    allStudents.forEach(divideStudents);
+    displayList(filtered);
+}
 
+function isRavenclaw(student) {
+    if (student.house === "Ravenclaw") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// display data
+function displayList(s) {
+    console.log(s)
+    s.forEach(divideStudents);
 }
 
 function divideStudents(student) {
-    console.log(student);
+    // console.log(student);
 
     // create clone
     const clone = document.querySelector("#list").content.cloneNode(true);
@@ -94,4 +108,5 @@ function divideStudents(student) {
 
     // append clone to the list
     document.querySelector("#students_list").appendChild(clone);
+
 }
