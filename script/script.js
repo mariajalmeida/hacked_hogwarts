@@ -44,12 +44,17 @@ function transcribeData(students) {
         }
 
         // last name
-        const lastNameOnly = removeSurroundingSpace.substring(lastSpace + 1);
-        if (lastNameOnly.includes("-")) {
-            const hyphen = lastNameOnly.indexOf("-");
-            student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1, hyphen).toLowerCase() + lastNameOnly.substring(hyphen, hyphen + 2).toUpperCase() + lastNameOnly.substring(hyphen + 2).toLowerCase();
+        if (removeSurroundingSpace.includes(" ")) {
+            const lastNameOnly = removeSurroundingSpace.substring(lastSpace + 1);
+            console.log("hey")
+            if (lastNameOnly.includes("-")) {
+                const hyphen = lastNameOnly.indexOf("-");
+                student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1, hyphen).toLowerCase() + lastNameOnly.substring(hyphen, hyphen + 2).toUpperCase() + lastNameOnly.substring(hyphen + 2).toLowerCase();
+            } else {
+                student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1).toLowerCase();
+            }
         } else {
-            student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1).toLowerCase();
+            student.lastName = undefined;
         }
 
         allStudents.push(student);
