@@ -128,6 +128,7 @@ function isHufflepuff(student) {
 // display data
 function displayList(s) {
     console.log(s)
+    document.querySelector(".list").innerHTML = "";
     s.forEach(divideStudents);
 }
 
@@ -148,6 +149,6 @@ function divideStudents(student) {
     house.textContent = student.house;
 
     // append clone to the list
-    document.querySelector("#students_list").appendChild(clone);
+    document.querySelector(".list").appendChild(clone);
 
 }

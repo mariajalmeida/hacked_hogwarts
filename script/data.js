@@ -70,16 +70,22 @@ function transcribeData(s) {
     const removeSpaceHouse = s.house.trim();
     student.house = removeSpaceHouse.substring(0, 1).toUpperCase() + removeSpaceHouse.substring(1).toLowerCase();
 
-    // allStudents.push(student);
-
     return student;
 
-    // displayList(allStudents);
 }
 
 // filter by house
 function buttonClicked() {
     document.querySelectorAll("[data-action='filter']").forEach(btn => btn.addEventListener("click", filterCategory));
+
+    document.querySelectorAll("[data-action='sort']").forEach(btn => btn.addEventListener("click", sortCategory));
+}
+
+function sortCategory(event) {
+    const sort = event.target.dataset.sort;
+    console.log(sort, "?");
+
+    sortBy(sort);
 }
 
 function filterCategory(event) {
@@ -89,15 +95,15 @@ function filterCategory(event) {
     filteredList(filter);
 }
 
-function filteredList(housetype) {
+function filteredList(filteredBy) {
     let filteredCategory = allStudents;
-    if (housetype === "Ravenclaw") {
+    if (filteredBy === "Ravenclaw") {
         filteredCategory = allStudents.filter(isRavenclaw);
-    } else if (housetype === "Gryffindor") {
+    } else if (filteredBy === "Gryffindor") {
         filteredCategory = allStudents.filter(isGryffindor);
-    } else if (housetype === "Slytherin") {
+    } else if (filteredBy === "Slytherin") {
         filteredCategory = allStudents.filter(isSlytherin);
-    } else if (housetype === "Hufflepuff") {
+    } else if (filteredBy === "Hufflepuff") {
         filteredCategory = allStudents.filter(isHufflepuff);
     } else {
         console.log("bye");
@@ -131,6 +137,35 @@ function isHufflepuff(student) {
         return true;
     } else {
         return false;
+    }
+}
+
+// sort by name
+function sortBy(sortedBy) {
+    let sorted = allStudents;
+
+    if (sortedBy === "firstname") {
+        sorted = allStudents.sort(sortByFirstName);
+    } else if (sortedBy === "lastname") {
+        sorted = allStudents.sort(sortByLastName);
+    }
+
+    displayList(sorted);
+}
+
+function sortByFirstName(a, b) {
+    if (a.firstName < b.firstName) {
+        return -1;
+    } else {
+        return 1;
+    }
+}
+
+function sortByLastName(a, b) {
+    if (a.lastName < b.lastName) {
+        return -1;
+    } else {
+        return 1;
     }
 }
 
