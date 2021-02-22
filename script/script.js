@@ -70,14 +70,43 @@ function transcribeData(students) {
 }
 
 // filter by house
-function filteredList() {
-    const filtered = allStudents.filter(isRavenclaw);
+function filteredList(housetype) {
+    let filtered = allStudents;
+    if (housetype === "Ravenclaw") {
+        filtered = allStudents.filter(isRavenclaw);
+    } else if (housetype === "Gryffindor") {
+        filtered = allStudents.filter(isGryffindor);
+    } else if (housetype === "Slytherin") {
+        filtered = allStudents.filter(isSlytherin);
+    } else if (housetype === "Hufflepuff") {
+        filtered = allStudents.filter(isHufflepuff);
+    }
 
     displayList(filtered);
 }
 
 function isRavenclaw(student) {
-    if (student.house === "Ravenclaw") {
+    return student.house === "Ravenclaw";
+}
+
+function isGryffindor(student) {
+    if (student.house === "Gryffindor") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isSlytherin(student) {
+    if (student.house === "Slytherin") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isHufflepuff(student) {
+    if (student.house === "Hufflepuff") {
         return true;
     } else {
         return false;
