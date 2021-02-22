@@ -46,7 +46,6 @@ function transcribeData(students) {
         // last name
         if (removeSurroundingSpace.includes(" ")) {
             const lastNameOnly = removeSurroundingSpace.substring(lastSpace + 1);
-            console.log("hey")
             if (lastNameOnly.includes("-")) {
                 const hyphen = lastNameOnly.indexOf("-");
                 student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1, hyphen).toLowerCase() + lastNameOnly.substring(hyphen, hyphen + 2).toUpperCase() + lastNameOnly.substring(hyphen + 2).toLowerCase();
@@ -57,12 +56,12 @@ function transcribeData(students) {
             student.lastName = undefined;
         }
 
+        // gender
+        student.gender = s.gender.substring(0, 1).toUpperCase() + s.gender.substring(1).toLowerCase();
+
         // house
         const removeSpaceHouse = s.house.trim();
         student.house = removeSpaceHouse.substring(0, 1).toUpperCase() + removeSpaceHouse.substring(1).toLowerCase();
-
-        // gender
-        student.gender = s.gender.substring(0, 1).toUpperCase() + s.gender.substring(1).toLowerCase();
 
         allStudents.push(student);
     });
