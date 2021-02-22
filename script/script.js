@@ -67,9 +67,21 @@ function transcribeData(students) {
     });
 
     displayList(allStudents);
+    buttonClicked();
 }
 
 // filter by house
+function buttonClicked() {
+    document.querySelectorAll("[data-action='filter']").forEach(btn => btn.addEventListener("click", filterCategory));
+}
+
+function filterCategory(event) {
+    const filter = event.target.dataset.filter;
+    console.log(filter, "?");
+
+    filteredList(filter);
+}
+
 function filteredList(housetype) {
     let filtered = allStudents;
     if (housetype === "Ravenclaw") {
