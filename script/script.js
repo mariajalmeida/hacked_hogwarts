@@ -57,6 +57,13 @@ function transcribeData(students) {
             student.lastName = undefined;
         }
 
+        // house
+        const removeSpaceHouse = s.house.trim();
+        student.house = removeSpaceHouse.substring(0, 1).toUpperCase() + removeSpaceHouse.substring(1).toLowerCase();
+
+        // gender
+        student.gender = s.gender.substring(0, 1).toUpperCase() + s.gender.substring(1).toLowerCase();
+
         allStudents.push(student);
     });
 
