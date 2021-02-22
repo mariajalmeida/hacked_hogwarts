@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: rgb(10, 63, 112);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.categories {
+    display: flex;
+}
+
+.categories h2 {
+    width: 200px;
+    margin: 0 10px;
+    padding: 0px 10px;
+}
+
+.student {
+    display: flex;
+    width: 100%;
+    background: rgb(10, 63, 112);
+}
+
+.student>div {
+    width: 200px;
+    background: rgb(20, 93, 136);
+    margin: 10px;
+    padding: 6px 10px;
+}

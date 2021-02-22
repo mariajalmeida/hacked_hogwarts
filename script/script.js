@@ -66,9 +66,32 @@ function transcribeData(students) {
         allStudents.push(student);
     });
 
-    cleanData();
+    insertData();
 }
 
-function cleanData() {
-    console.table(allStudents);
+function insertData() {
+    // console.table(allStudents);
+
+    allStudents.forEach(divideStudents);
+
+}
+
+function divideStudents(student) {
+    console.log(student);
+
+    // create clone
+    const clone = document.querySelector("#list").content.cloneNode(true);
+
+    // our data
+    const fullname = clone.querySelector(".fullname");
+    fullname.textContent = student.firstName + " " + student.middleName + " " + student.lastName;
+
+    const gender = clone.querySelector(".gender");
+    gender.textContent = student.gender;
+
+    const house = clone.querySelector(".house");
+    house.textContent = student.house;
+
+    // append clone to the list
+    document.querySelector("#students_list").appendChild(clone);
 }
