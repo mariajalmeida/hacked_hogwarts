@@ -45,10 +45,11 @@ function transcribeData(s) {
         student.nickname = removeQuotes.substring(0, 1).toUpperCase() + removeQuotes.substring(1).toLowerCase();
     } else if (middleNameOnly.length > 2) {
         student.middleName = middleNameOnly.substring(0, 1).toUpperCase() + middleNameOnly.substring(1).toLowerCase();
-    } else {
-        student.nickname = undefined;
-        student.middleName = undefined;
     }
+    // else {
+    //     student.nickname = undefined;
+    //     student.middleName = undefined;
+    // }
 
     // last name
     if (removeSurroundingSpace.includes(" ")) {
@@ -59,9 +60,10 @@ function transcribeData(s) {
         } else {
             student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1).toLowerCase();
         }
-    } else {
-        student.lastName = undefined;
     }
+    // else {
+    //     student.lastName = undefined;
+    // }
 
     // gender
     student.gender = s.gender.substring(0, 1).toUpperCase() + s.gender.substring(1).toLowerCase();
@@ -74,27 +76,28 @@ function transcribeData(s) {
 
 }
 
-// filter by house
+// buttons when clicked iii
 function buttonClicked() {
     document.querySelectorAll("[data-action='filter']").forEach(btn => btn.addEventListener("click", filterCategory));
 
     document.querySelectorAll("[data-action='sort']").forEach(btn => btn.addEventListener("click", sortCategory));
 }
 
+// sort by name button targeted ii
 function sortCategory(event) {
     const sort = event.target.dataset.sort;
-    console.log(sort, "?");
 
     sortBy(sort);
 }
 
+// filter by house button targeted ii
 function filterCategory(event) {
     const filter = event.target.dataset.filter;
-    console.log(filter, "?");
 
     filteredList(filter);
 }
 
+// filter by house i
 function filteredList(filteredBy) {
     let filteredCategory = allStudents;
     if (filteredBy === "Ravenclaw") {
@@ -140,7 +143,7 @@ function isHufflepuff(student) {
     }
 }
 
-// sort by name
+// sort by name i
 function sortBy(sortedBy) {
     let sorted = allStudents;
 
@@ -171,13 +174,12 @@ function sortByLastName(a, b) {
 
 // display data
 function displayList(s) {
-    console.log(s)
     document.querySelector(".list").innerHTML = "";
+
     s.forEach(divideStudents);
 }
 
 function divideStudents(student) {
-    // console.log(student);
 
     // create clone
     const clone = document.querySelector("#list").content.cloneNode(true);
@@ -192,7 +194,54 @@ function divideStudents(student) {
     const house = clone.querySelector(".house");
     house.textContent = student.house;
 
+    // modal button
+    clone.querySelector(".student").addEventListener("click", res => {
+        openModal(student);
+    });
+
     // append clone to the list
     document.querySelector(".list").appendChild(clone);
 
+}
+
+function openModal(m) {
+    console.log(m, "sup");
+
+    const firstName = document.querySelector(".firstname p");
+    firstName.textContent = m.firstName;
+
+    const nickname = document.querySelector(".nickname p");
+    if (m.nickname) {
+        nickname.textContent = m.nickname;
+    } else {
+        nickname.textContent = "x";
+    }
+
+    const middleName = document.querySelector(".middlename p");
+
+    if (m.middleName) {
+        middleName.textContent = m.middleName;
+    } else {
+        middleName.textContent = "x";
+    }
+
+    const lastName = document.querySelector(".lastname p");
+    lastName.textContent = m.lastName;
+
+    const gender = document.querySelector(".gender p");
+    gender.textContent = m.gender;
+
+    const house = document.querySelector(".house p");
+    house.textContent = m.house;
+
+    // modal
+    const modal = document.querySelector(".modal-background");
+    modal.classList.remove("hide");
+    const closeBtn = document.querySelector("span");
+    closeBtn.addEventListener("click", () => {
+        modal.classList.add("hide");
+    })
+    modal.onclick = () => {
+        modal.classList.add("hide");
+    }
 }
