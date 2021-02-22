@@ -99,3 +99,19 @@ details button {
 .close-btn:hover {
     color: darkgray;
 }
+
+.slytherin {
+    background-color: #2A623D;
+}
+
+.hufflepuff {
+    background-color: #60605c;
+}
+
+.ravenclaw {
+    background-color: #222f5b;
+}
+
+.gryffindor {
+    background-color: #740001;
+}

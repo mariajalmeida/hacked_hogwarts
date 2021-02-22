@@ -234,6 +234,30 @@ function openModal(m) {
     const house = document.querySelector(".house p");
     house.textContent = m.house;
 
+
+    const modalInner = document.querySelector(".modal-content");
+    if (m.house === "Slytherin") {
+        modalInner.classList.remove("gryffindor");
+        modalInner.classList.remove("hufflepuff");
+        modalInner.classList.remove("ravenclaw");
+        modalInner.classList.add("slytherin");
+    } else if (m.house === "Ravenclaw") {
+        modalInner.classList.remove("gryffindor");
+        modalInner.classList.remove("slytherin");
+        modalInner.classList.remove("hufflepuff");
+        modalInner.classList.add("ravenclaw");
+    } else if (m.house === "Gryffindor") {
+        modalInner.classList.remove("ravenclaw");
+        modalInner.classList.remove("slytherin");
+        modalInner.classList.remove("hufflepuff");
+        modalInner.classList.add("gryffindor");
+    } else if (m.house === "Hufflepuff") {
+        modalInner.classList.remove("gryffindor");
+        modalInner.classList.remove("ravenclaw");
+        modalInner.classList.remove("slytherin");
+        modalInner.classList.add("hufflepuff");
+    }
+
     // modal
     const modal = document.querySelector(".modal-background");
     modal.classList.remove("hide");
