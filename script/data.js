@@ -91,6 +91,10 @@ function buttonClicked() {
 // filter by house button targeted ii
 function filterCategory(event) {
     const filter = event.target.dataset.filter;
+    // const old = document.querySelector(`[data-action='${filter}']`);
+    // old.classList.remove("active");
+
+    event.target.classList.add("active");
 
     setFilter(filter);
 }
@@ -272,9 +276,6 @@ function divideStudents(student) {
         closeBtn.addEventListener("click", () => {
             modal.classList.add("hide");
         })
-        modal.onclick = () => {
-            modal.classList.add("hide");
-        }
     }
 
     // append clone to the list

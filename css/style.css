@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -17,12 +20,14 @@ body {
     width: 200px;
     margin: 0 10px;
     padding: 0px 10px;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .student {
     display: flex;
     width: 100%;
     background: rgb(10, 63, 112);
+    font-family: 'Orbitron', sans-serif;
 }
 
 .student>div {
@@ -34,7 +39,7 @@ body {
 
 .filter_sort {
     display: flex;
-    width: 100%;
+    width: 650px;
     justify-content: flex-end;
 }
 
@@ -42,9 +47,16 @@ body {
     width: 200px;
 }
 
+.active {
+    background-color: teal;
+    outline: none;
+    border: none;
+}
+
 details {
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 details button {
@@ -133,6 +145,16 @@ details button {
     border-radius: 4px;
 }
 
+.personal_info h3 {
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 0;
+}
+
+.personal_info p {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+}
+
 .personal_info>div {
     width: 140px;
     margin: 0 10px;
@@ -145,6 +167,11 @@ details button {
 
 .gryffindor .personal_info h3::first-letter {
     color: #AE0001;
+}
+
+.slytherin .personal_info h3::first-letter {
+    color: #000000;
+    font-weight: 900;
 }
 
 .personal_info {
