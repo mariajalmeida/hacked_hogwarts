@@ -98,49 +98,18 @@ function filterCategory(event) {
 }
 
 // filter by house i
-function filteredList(filteredBy) {
-    let filteredCategory = allStudents;
-    if (filteredBy === "Ravenclaw") {
-        filteredCategory = allStudents.filter(isRavenclaw);
-    } else if (filteredBy === "Gryffindor") {
-        filteredCategory = allStudents.filter(isGryffindor);
-    } else if (filteredBy === "Slytherin") {
-        filteredCategory = allStudents.filter(isSlytherin);
-    } else if (filteredBy === "Hufflepuff") {
-        filteredCategory = allStudents.filter(isHufflepuff);
-    } else {
-        console.log("bye");
+function filteredList(house) {
+    let filteredCategory = allStudents.filter(isHouse);
+
+    function isHouse(student) {
+        if (student.house === house || house === "all") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     displayList(filteredCategory);
-}
-
-function isRavenclaw(student) {
-    return student.house === "Ravenclaw";
-}
-
-function isGryffindor(student) {
-    if (student.house === "Gryffindor") {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function isSlytherin(student) {
-    if (student.house === "Slytherin") {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function isHufflepuff(student) {
-    if (student.house === "Hufflepuff") {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 // sort by name i
