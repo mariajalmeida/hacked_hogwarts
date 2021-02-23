@@ -112,7 +112,7 @@ function filterList(filteredList) {
             return false;
         }
     }
-    console.log(filteredList, "???");
+    console.log(filteredList, "filtered list");
     return filteredList;
 }
 
@@ -137,7 +137,7 @@ function sortBy(sortedList) {
     } else if (settings.sortedBy === "lastname") {
         return allStudents.sort(sortByLastName);
     }
-    console.log(sortedList, "HELLO")
+    console.log(sortedList, "sorted list")
     return sortedList;
 }
 
@@ -158,10 +158,9 @@ function sortByLastName(a, b) {
 }
 
 function buildList() {
-    const currentList = filterList();
-    console.log(currentList, "currentlist")
-    const sortedList = sortBy(currentList);
-    console.log(sortedList, "sortedlist")
+    const sortingList = sortBy();
+    const currentList = filterList(sortingList);
+
 
     displayList(currentList);
 }
