@@ -198,74 +198,73 @@ function divideStudents(student) {
     clone.querySelector(".student").addEventListener("click", res => {
         openModal(student);
     });
+    // modal set up
+    function openModal() {
+
+        const firstName = document.querySelector(".firstname p");
+        firstName.textContent = student.firstName;
+
+        const nickname = document.querySelector(".nickname p");
+        if (student.nickname) {
+            nickname.textContent = student.nickname;
+        } else {
+            nickname.textContent = "x";
+        }
+
+        const middleName = document.querySelector(".middlename p");
+
+        if (student.middleName) {
+            middleName.textContent = student.middleName;
+        } else {
+            middleName.textContent = "x";
+        }
+
+        const lastName = document.querySelector(".lastname p");
+        lastName.textContent = student.lastName;
+
+        const gender = document.querySelector(".gender p");
+        gender.textContent = student.gender;
+
+        const house = document.querySelector(".house p");
+        house.textContent = student.house;
+
+
+        const modalInner = document.querySelector(".modal-content");
+        if (student.house === "Slytherin") {
+            modalInner.classList.remove("gryffindor");
+            modalInner.classList.remove("hufflepuff");
+            modalInner.classList.remove("ravenclaw");
+            modalInner.classList.add("slytherin");
+        } else if (student.house === "Ravenclaw") {
+            modalInner.classList.remove("gryffindor");
+            modalInner.classList.remove("slytherin");
+            modalInner.classList.remove("hufflepuff");
+            modalInner.classList.add("ravenclaw");
+        } else if (student.house === "Gryffindor") {
+            modalInner.classList.remove("ravenclaw");
+            modalInner.classList.remove("slytherin");
+            modalInner.classList.remove("hufflepuff");
+            modalInner.classList.add("gryffindor");
+        } else if (student.house === "Hufflepuff") {
+            modalInner.classList.remove("gryffindor");
+            modalInner.classList.remove("ravenclaw");
+            modalInner.classList.remove("slytherin");
+            modalInner.classList.add("hufflepuff");
+        }
+
+        // modal
+        const modal = document.querySelector(".modal-background");
+        modal.classList.remove("hide");
+        const closeBtn = document.querySelector("span");
+        closeBtn.addEventListener("click", () => {
+            modal.classList.add("hide");
+        })
+        modal.onclick = () => {
+            modal.classList.add("hide");
+        }
+    }
 
     // append clone to the list
     document.querySelector(".list").appendChild(clone);
 
-}
-
-function openModal(m) {
-    console.log(m, "sup");
-
-    const firstName = document.querySelector(".firstname p");
-    firstName.textContent = m.firstName;
-
-    const nickname = document.querySelector(".nickname p");
-    if (m.nickname) {
-        nickname.textContent = m.nickname;
-    } else {
-        nickname.textContent = "x";
-    }
-
-    const middleName = document.querySelector(".middlename p");
-
-    if (m.middleName) {
-        middleName.textContent = m.middleName;
-    } else {
-        middleName.textContent = "x";
-    }
-
-    const lastName = document.querySelector(".lastname p");
-    lastName.textContent = m.lastName;
-
-    const gender = document.querySelector(".gender p");
-    gender.textContent = m.gender;
-
-    const house = document.querySelector(".house p");
-    house.textContent = m.house;
-
-
-    const modalInner = document.querySelector(".modal-content");
-    if (m.house === "Slytherin") {
-        modalInner.classList.remove("gryffindor");
-        modalInner.classList.remove("hufflepuff");
-        modalInner.classList.remove("ravenclaw");
-        modalInner.classList.add("slytherin");
-    } else if (m.house === "Ravenclaw") {
-        modalInner.classList.remove("gryffindor");
-        modalInner.classList.remove("slytherin");
-        modalInner.classList.remove("hufflepuff");
-        modalInner.classList.add("ravenclaw");
-    } else if (m.house === "Gryffindor") {
-        modalInner.classList.remove("ravenclaw");
-        modalInner.classList.remove("slytherin");
-        modalInner.classList.remove("hufflepuff");
-        modalInner.classList.add("gryffindor");
-    } else if (m.house === "Hufflepuff") {
-        modalInner.classList.remove("gryffindor");
-        modalInner.classList.remove("ravenclaw");
-        modalInner.classList.remove("slytherin");
-        modalInner.classList.add("hufflepuff");
-    }
-
-    // modal
-    const modal = document.querySelector(".modal-background");
-    modal.classList.remove("hide");
-    const closeBtn = document.querySelector("span");
-    closeBtn.addEventListener("click", () => {
-        modal.classList.add("hide");
-    })
-    modal.onclick = () => {
-        modal.classList.add("hide");
-    }
 }
