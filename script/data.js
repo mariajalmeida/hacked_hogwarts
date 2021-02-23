@@ -12,6 +12,12 @@ async function fetchData() {
 
 let allStudents = [];
 
+const settings = {
+    filter: "Gryffindor",
+    sortBy: "firstname"
+}
+
+
 function prepareData(data) {
     allStudents = data.map(transcribeData);
 
@@ -73,7 +79,6 @@ function transcribeData(s) {
     student.house = removeSpaceHouse.substring(0, 1).toUpperCase() + removeSpaceHouse.substring(1).toLowerCase();
 
     return student;
-
 }
 
 // buttons when clicked iii
@@ -87,42 +92,53 @@ function buttonClicked() {
 function filterCategory(event) {
     const filter = event.target.dataset.filter;
 
-    filteredList(filter);
+    setFilter(filter);
+}
+
+function setFilter(filter) {
+    settings.filterBy = filter;
+    buildList();
 }
 
 // filter by house i
-function filteredList(house) {
-    let filteredCategory = allStudents.filter(isHouse);
+function filterList(filteredList) {
+
+    filteredList = allStudents.filter(isHouse);
 
     function isHouse(student) {
-        if (student.house === house || house === "all") {
+        if (settings.filterBy === student.house || settings.filterBy === "all") {
             return true;
         } else {
             return false;
         }
     }
-
-    displayList(filteredCategory);
+    console.log(filteredList, "???");
+    return filteredList;
 }
 
 // sort by name button targeted ii
 function sortCategory(event) {
     const sort = event.target.dataset.sort;
 
-    sortBy(sort);
+    setSort(sort);
+}
+
+function setSort(sortedBy) {
+    settings.sortedBy = sortedBy;
+    buildList();
 }
 
 // sort by name i
-function sortBy(sortedBy) {
-    let sorted = allStudents;
+function sortBy(sortedList) {
+    sortedList = allStudents;
 
-    if (sortedBy === "firstname") {
-        sorted = allStudents.sort(sortByFirstName);
-    } else if (sortedBy === "lastname") {
-        sorted = allStudents.sort(sortByLastName);
+    if (settings.sortedBy === "firstname") {
+        return allStudents.sort(sortByFirstName);
+    } else if (settings.sortedBy === "lastname") {
+        return allStudents.sort(sortByLastName);
     }
-
-    displayList(sorted);
+    console.log(sortedList, "HELLO")
+    return sortedList;
 }
 
 function sortByFirstName(a, b) {
@@ -141,8 +157,18 @@ function sortByLastName(a, b) {
     }
 }
 
+function buildList() {
+    const currentList = filterList();
+    console.log(currentList, "currentlist")
+    const sortedList = sortBy(currentList);
+    console.log(sortedList, "sortedlist")
+
+    displayList(currentList);
+}
+
 // display data
 function displayList(s) {
+    console.log(s, "final list")
     document.querySelector(".list").innerHTML = "";
 
     s.forEach(divideStudents);
@@ -154,6 +180,15 @@ function divideStudents(student) {
     const clone = document.querySelector("#list").content.cloneNode(true);
 
     // our data
+    // const images = "../images/" + student.lastName;
+    // const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
+
+    // if (images) {
+    //     clone.querySelector("img").src = images + img_path;
+    // } else {
+    //     console.log("ignore");
+    // }
+
     const fullname = clone.querySelector(".fullname");
     fullname.textContent = student.firstName + " " + student.middleName + " " + student.lastName;
 
