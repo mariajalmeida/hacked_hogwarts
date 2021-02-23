@@ -203,6 +203,17 @@ function divideStudents(student) {
     // modal set up
     function openModal() {
 
+        let banner_img = document.querySelector(".banner img");
+        if (student.house === "Ravenclaw") {
+            banner_img.src = "../images/banner_ravenclaw.jpg";
+        } else if (student.house === "Gryffindor") {
+            banner_img.src = "../images/banner_gryffindor.jpg";
+        } else if (student.house === "Slytherin") {
+            banner_img.src = "../images/banner_slytherin.jpg";
+        } else if (student.house === "Hufflepuff") {
+            banner_img.src = "../images/banner_hufflepuff.jpg";
+        }
+
         const firstName = document.querySelector(".firstname p");
         firstName.textContent = student.firstName;
 
