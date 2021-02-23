@@ -83,13 +83,6 @@ function buttonClicked() {
     document.querySelectorAll("[data-action='sort']").forEach(btn => btn.addEventListener("click", sortCategory));
 }
 
-// sort by name button targeted ii
-function sortCategory(event) {
-    const sort = event.target.dataset.sort;
-
-    sortBy(sort);
-}
-
 // filter by house button targeted ii
 function filterCategory(event) {
     const filter = event.target.dataset.filter;
@@ -110,6 +103,13 @@ function filteredList(house) {
     }
 
     displayList(filteredCategory);
+}
+
+// sort by name button targeted ii
+function sortCategory(event) {
+    const sort = event.target.dataset.sort;
+
+    sortBy(sort);
 }
 
 // sort by name i
