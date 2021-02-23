@@ -14,7 +14,7 @@ let allStudents = [];
 
 const settings = {
     filter: "Gryffindor",
-    sortBy: "firstname"
+    sortedBy: "firstname"
 }
 
 
@@ -97,6 +97,7 @@ function filterCategory(event) {
 
 function setFilter(filter) {
     settings.filterBy = filter;
+    console.log(settings.filterBy, "FILTER")
     buildList();
 }
 
@@ -125,20 +126,19 @@ function sortCategory(event) {
 
 function setSort(sortedBy) {
     settings.sortedBy = sortedBy;
+    console.log(settings.sortedBy, "SORTED");
     buildList();
 }
 
 // sort by name i
-function sortBy(sortedList) {
-    sortedList = allStudents;
+function sortBy() {
 
     if (settings.sortedBy === "firstname") {
+        console.log("return first name");
         return allStudents.sort(sortByFirstName);
     } else if (settings.sortedBy === "lastname") {
         return allStudents.sort(sortByLastName);
     }
-    console.log(sortedList, "sorted list")
-    return sortedList;
 }
 
 function sortByFirstName(a, b) {
@@ -158,7 +158,7 @@ function sortByLastName(a, b) {
 }
 
 function buildList() {
-    const sortingList = sortBy();
+    const sortingList = sortBy(allStudents);
     const currentList = filterList(sortingList);
 
 
