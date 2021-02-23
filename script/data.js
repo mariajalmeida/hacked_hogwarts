@@ -13,8 +13,8 @@ async function fetchData() {
 let allStudents = [];
 
 const settings = {
-    filter: "Gryffindor",
-    sortedBy: "firstname"
+    filter: "",
+    sortedBy: ""
 }
 
 
@@ -160,7 +160,6 @@ function sortByLastName(a, b) {
 function buildList() {
     const sortingList = sortBy(allStudents);
     const currentList = filterList(sortingList);
-
 
     displayList(currentList);
 }
