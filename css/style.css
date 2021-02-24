@@ -47,7 +47,8 @@ body {
     width: 200px;
 }
 
-.active {
+.active,
+.active_sort {
     background-color: teal;
     outline: none;
     border: none;

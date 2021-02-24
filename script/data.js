@@ -91,10 +91,14 @@ function buttonClicked() {
 // filter by house button targeted ii
 function filterCategory(event) {
     const filter = event.target.dataset.filter;
-    // const old = document.querySelector(`[data-action='${filter}']`);
-    // old.classList.remove("active");
 
-    event.target.classList.add("active");
+    // toggle active class
+    const active = document.querySelector(".active");
+    if (active !== null) {
+        active.classList.remove("active");
+    }
+    event.target.classList.toggle("active");
+
 
     setFilter(filter);
 }
@@ -124,6 +128,13 @@ function filterList(filteredList) {
 // sort by name button targeted ii
 function sortCategory(event) {
     const sort = event.target.dataset.sort;
+
+    // toggle active class
+    const active = document.querySelector(".active_sort");
+    if (active !== null) {
+        active.classList.remove("active_sort");
+    }
+    event.target.classList.toggle("active_sort");
 
     setSort(sort);
 }
@@ -170,7 +181,6 @@ function buildList() {
 
 // display data
 function displayList(s) {
-    console.log(s, "final list")
     document.querySelector(".list").innerHTML = "";
 
     s.forEach(divideStudents);
