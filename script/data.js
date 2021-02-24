@@ -32,6 +32,10 @@ function transcribeData(s) {
         middleName: "",
         lastName: "",
         nickname: "",
+        nonPrefect: true,
+        nonSquad: true,
+        expelStudent: false
+
     }
     const student = Object.create(Student);
 
@@ -278,6 +282,45 @@ function divideStudents(student) {
             modalInner.classList.remove("ravenclaw");
             modalInner.classList.remove("slytherin");
             modalInner.classList.add("hufflepuff");
+        }
+
+        // expel student
+        document.querySelector(".expel").addEventListener("click", expelStudent);
+
+        function expelStudent() {
+            if (student.expelStudent === true) {
+                student.expelStudent = false;
+                document.querySelector(".expel").textContent = "Expel student";
+            } else {
+                student.expelStudent = true;
+                document.querySelector(".expel").textContent = "Student expelled";
+            }
+        }
+
+        // prefect
+        document.querySelector(".non-prefect").addEventListener("click", decidePrefect);
+
+        function decidePrefect() {
+            if (student.nonPrefect === true) {
+                student.nonPrefect = false;
+                document.querySelector(".non-prefect").textContent = "Prefect";
+            } else {
+                student.nonPrefect = true;
+                document.querySelector(".non-prefect").textContent = "Non-Prefect";
+            }
+        }
+
+        // squad member
+        document.querySelector(".non-member").addEventListener("click", decideMember);
+
+        function decideMember() {
+            if (student.nonSquad === true) {
+                student.nonSquad = false;
+                document.querySelector(".non-member").textContent = "Inquisitorial Squad Member";
+            } else {
+                student.nonSquad = true;
+                document.querySelector(".non-member").textContent = "Non-Inquisitorial Squad Member";
+            }
         }
 
         // modal
