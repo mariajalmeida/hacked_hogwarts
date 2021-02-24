@@ -139,6 +139,11 @@ details button {
     background-image: linear-gradient(to bottom right, #D3A625, #EEBA30, #D3A625);
 }
 
+.information {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .personal_info {
     display: flex;
     max-width: 330px;
@@ -183,4 +188,13 @@ details button {
 
 .personal_info {
     text-align: left;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons button {
+    margin: 10px 0;
 }
