@@ -54,6 +54,12 @@ body {
     border: none;
 }
 
+.empty {
+    width: 108px;
+    height: 114px;
+    background-color: teal;
+}
+
 details {
     display: flex;
     flex-direction: column;

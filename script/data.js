@@ -192,14 +192,15 @@ function divideStudents(student) {
     const clone = document.querySelector("#list").content.cloneNode(true);
 
     // our data
-    // const images = "../images/" + student.lastName;
-    // const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
+    const images = "../images/" + student.lastName;
+    const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
 
-    // if (images) {
-    //     clone.querySelector("img").src = images + img_path;
-    // } else {
-    //     console.log("ignore");
-    // }
+    if (student.firstName === "Justin" || student.firstName === "Padma" || student.firstName === "Parvati" || student.firstName === "Leanne") {
+        console.log("hey")
+        clone.querySelector("img").classList.add("empty");
+    } else {
+        clone.querySelector("img").src = images + img_path;
+    }
 
     const fullname = clone.querySelector(".fullname");
     fullname.textContent = student.firstName + " " + student.middleName + " " + student.lastName;
