@@ -17,7 +17,7 @@
             <div class="filter_houses">
                 <details>
                     <summary>House</summary>
-                    <button class="filter active" data-action="filter" data-filter="all">All</button>
+                    <button class="filter active" data-action="filter" data-filter="*">All</button>
                     <button class="filter" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button>
                     <button class="filter" data-action="filter" data-filter="Gryffindor">Gryffindor</button>
                     <button class="filter" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button>
@@ -42,10 +42,13 @@
 
     <template id="list">
         <div class="student">
-            <img src="" alt="">
+            <div class="image"><img src="" alt=""></div>
             <div class="fullname"></div>
             <div class="gender"></div>
             <div class="house"></div>
+            <button data-field="expel" data-expel="false" class="expell">Expel student</button>
+            <button class="non-prefect">Non-Prefect</button>
+            <button class="non-member">Non-Inquisitorial Squad Member</button>
         </div>
 
         <div class="modal-background hide">

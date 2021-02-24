@@ -57,7 +57,7 @@ body {
 .empty {
     width: 108px;
     height: 114px;
-    background-color: teal;
+    background-color: rgb(21, 110, 110);
 }
 
 details {

@@ -13,7 +13,7 @@ async function fetchData() {
 let allStudents = [];
 
 const settings = {
-    filter: "",
+    filter: "all",
     sortedBy: ""
 }
 
@@ -199,9 +199,10 @@ function divideStudents(student) {
     const images = "../images/" + student.lastName;
     const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
 
+    // images
     if (student.firstName === "Justin" || student.firstName === "Padma" || student.firstName === "Parvati" || student.firstName === "Leanne") {
-        console.log("hey")
-        clone.querySelector("img").classList.add("empty");
+        clone.querySelector(".image").classList.add("empty");
+        clone.querySelector("img").remove();
     } else {
         clone.querySelector("img").src = images + img_path;
     }
@@ -215,8 +216,25 @@ function divideStudents(student) {
     const house = clone.querySelector(".house");
     house.textContent = student.house;
 
+    // expel student
+    clone.querySelector("[data-field=expel]").dataset.expel = student.expelStudent;
+    clone.querySelector("[data-field=expel]").addEventListener("click", expelStudentNow);
+
+    function expelStudentNow() {
+        if (student.expelStudent === true) {
+            console.log("false");
+            student.expelStudent = false;
+            document.querySelector(".expell").textContent = "Hey student";
+        } else {
+            console.log("true");
+            student.expelStudent = true;
+            document.querySelector(".expel").textContent = "Student expelled";
+        }
+        buildList();
+    }
+
     // modal button
-    clone.querySelector(".student").addEventListener("click", res => {
+    clone.querySelector(".image").addEventListener("click", res => {
         openModal(student);
     });
     // modal set up
@@ -282,19 +300,6 @@ function divideStudents(student) {
             modalInner.classList.remove("ravenclaw");
             modalInner.classList.remove("slytherin");
             modalInner.classList.add("hufflepuff");
-        }
-
-        // expel student
-        document.querySelector(".expel").addEventListener("click", expelStudent);
-
-        function expelStudent() {
-            if (student.expelStudent === true) {
-                student.expelStudent = false;
-                document.querySelector(".expel").textContent = "Expel student";
-            } else {
-                student.expelStudent = true;
-                document.querySelector(".expel").textContent = "Student expelled";
-            }
         }
 
         // prefect
