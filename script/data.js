@@ -241,7 +241,7 @@ function displaySingleStudent(student) {
         if (student.prefect === true) {
             student.prefect = false;
         } else {
-            student.prefect = true;
+            decideAPrefect(student);
         }
         buildList();
     }
@@ -267,6 +267,50 @@ function displaySingleStudent(student) {
     // append clone to the list
     document.querySelector(".list").appendChild(clone);
 
+}
+
+function decideAPrefect(selectedStudent) {
+
+    const prefects = allStudents.filter(student => student.prefect);
+    const numberOfPrefects = prefects.length;
+    console.log(numberOfPrefects, "NUMBER");
+    const teammate = prefects.filter(student => student.house === selectedStudent.house).shift();
+    console.log(teammate, "teammate?")
+
+
+    if (teammate !== undefined && numberOfPrefects === 2) {
+        console.log("Two members per house");
+        removeOther(teammate);
+    } else if (numberOfPrefects >= 2) {
+        console.log("There can only be two prefects");
+        removeAnotherPrefect(prefects[0], prefects[1]);
+    } else {
+        newAppointedPrefect(selectedStudent);
+    }
+
+    function removeOther(another) {
+        removeStudent(another);
+        newAppointedPrefect(selectedStudent);
+    }
+
+    function removeAnotherPrefect(prefectA, prefectB) {
+        // inquire the user to choose or keep original
+
+        removeStudent(prefectA);
+        newAppointedPrefect(selectedStudent);
+
+        // if removed
+        removeStudent(prefectB);
+        newAppointedPrefect(selectedStudent);
+    }
+
+    function removeStudent(prefectStudent) {
+        prefectStudent.prefect = false;
+    }
+
+    function newAppointedPrefect(student) {
+        student.prefect = true;
+    }
 }
 
 // modal set up
