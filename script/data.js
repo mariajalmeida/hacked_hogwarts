@@ -13,7 +13,7 @@ async function fetchData() {
 let allStudents = [];
 
 const settings = {
-    filterby: "",
+    filterBy: "all",
     sortedBy: ""
 }
 
@@ -114,9 +114,9 @@ function setFilter(filter) {
 }
 
 // filter by house i
-function filterList(filteredList) {
+function filterList(inputList) {
 
-    filteredList = allStudents.filter(isHouse);
+    const filteredList = inputList.filter(isHouse);
 
     function isHouse(student) {
         if (settings.filterBy === student.house || settings.filterBy === "all") {
@@ -160,6 +160,8 @@ function sortBy() {
     } else if (settings.sortedBy === "lastname") {
         console.log("return by last name")
         return allStudents.sort(sortByLastName);
+    } else {
+        return allStudents;
     }
 }
 
