@@ -21,7 +21,7 @@ const settings = {
 function prepareData(data) {
     allStudents = data.map(transcribeData);
 
-    displayList(allStudents);
+    buildList();
     buttonClicked();
 }
 
