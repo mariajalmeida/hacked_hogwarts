@@ -32,7 +32,7 @@ function transcribeData(s) {
         middleName: "",
         lastName: "",
         nickname: "",
-        nonPrefect: true,
+        prefect: false,
         nonSquad: true,
         expelStudent: false
 
@@ -229,16 +229,21 @@ function displaySingleStudent(student) {
     }
 
     // prefect
-    clone.querySelector(".non-prefect").addEventListener("click", decidePrefect);
+    if (student.prefect === true) {
+        clone.querySelector("[data-field=prefect]").textContent = "Prefect";
+    } else {
+        clone.querySelector("[data-field=prefect]").textContent = "Non-Prefect";
+    }
 
-    function decidePrefect(event) {
-        if (student.nonPrefect === true) {
-            student.nonPrefect = false;
-            event.target.textContent = "Prefect";
+    clone.querySelector("[data-field=prefect]").addEventListener("click", makePrefect);
+
+    function makePrefect() {
+        if (student.prefect === true) {
+            student.prefect = false;
         } else {
-            student.nonPrefect = true;
-            event.target.textContent = "Non-Prefect";
+            student.prefect = true;
         }
+        buildList();
     }
 
     // squad member
@@ -269,13 +274,13 @@ function openModal(student) {
 
     let banner_img = document.querySelector(".banner img");
     if (student.house === "Ravenclaw") {
-        banner_img.src = "../images/banner_ravenclaw.jpg";
+        banner_img.src = "./images/banner_ravenclaw.jpg";
     } else if (student.house === "Gryffindor") {
-        banner_img.src = "../images/banner_gryffindor.jpg";
+        banner_img.src = "./images/banner_gryffindor.jpg";
     } else if (student.house === "Slytherin") {
-        banner_img.src = "../images/banner_slytherin.jpg";
+        banner_img.src = "./images/banner_slytherin.jpg";
     } else if (student.house === "Hufflepuff") {
-        banner_img.src = "../images/banner_hufflepuff.jpg";
+        banner_img.src = "./images/banner_hufflepuff.jpg";
     }
 
     const firstName = document.querySelector(".firstname p");
