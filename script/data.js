@@ -8,6 +8,7 @@ async function fetchData() {
     const data = await response.json();
 
     prepareData(data);
+    totalNumberOfStudents(data);
 }
 
 let allStudents = [];
@@ -20,7 +21,6 @@ const settings = {
 
 function prepareData(data) {
     allStudents = data.map(transcribeData);
-
     buildList();
     buttonClicked();
 }
@@ -56,10 +56,6 @@ function transcribeData(s) {
     } else if (middleNameOnly.length > 2) {
         student.middleName = middleNameOnly.substring(0, 1).toUpperCase() + middleNameOnly.substring(1).toLowerCase();
     }
-    // else {
-    //     student.nickname = undefined;
-    //     student.middleName = undefined;
-    // }
 
     // last name
     if (removeSurroundingSpace.includes(" ")) {
@@ -71,9 +67,6 @@ function transcribeData(s) {
             student.lastName = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1).toLowerCase();
         }
     }
-    // else {
-    //     student.lastName = undefined;
-    // }
 
     // gender
     student.gender = s.gender.substring(0, 1).toUpperCase() + s.gender.substring(1).toLowerCase();
@@ -186,13 +179,34 @@ function displayList(s) {
     document.querySelector(".list").innerHTML = "";
 
     s.forEach(displaySingleStudent);
+    listOfStudentsDisplayed(s);
+}
+
+function totalNumberOfStudents(students) {
+    document.querySelector(".students_total p").textContent = students.length;
+}
+
+function listOfStudentsDisplayed(students) {
+    // data
+    document.querySelector(".total-list-number p").textContent = students.length;
+}
+
+function numberOfStudentsPerHouse(student) {
+    const result = allStudents.filter(student => student)
+    console.log(result);
+    if (student.house === result) {
+        console.log("hey");
+        return result.length;
+    } else {
+        console.log("bye")
+    }
 }
 
 function displaySingleStudent(student) {
 
     // create clone
     const clone = document.querySelector("#list").content.cloneNode(true);
-
+    numberOfStudentsPerHouse(student);
     // our data
     const images = "./images/" + student.lastName.toLowerCase();
     const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
@@ -266,7 +280,6 @@ function displaySingleStudent(student) {
 
     // append clone to the list
     document.querySelector(".list").appendChild(clone);
-
 }
 
 function decideAPrefect(selectedStudent) {
