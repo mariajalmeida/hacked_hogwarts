@@ -201,7 +201,7 @@ function divideStudents(student) {
     const clone = document.querySelector("#list").content.cloneNode(true);
 
     // our data
-    const images = "../images/" + student.lastName;
+    const images = "./images/" + student.lastName;
     const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
 
     // images
