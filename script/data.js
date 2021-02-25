@@ -13,7 +13,7 @@ async function fetchData() {
 let allStudents = [];
 
 const settings = {
-    filter: "all",
+    filterby: "",
     sortedBy: ""
 }
 
@@ -120,8 +120,10 @@ function filterList(filteredList) {
 
     function isHouse(student) {
         if (settings.filterBy === student.house || settings.filterBy === "all") {
+            console.log("by house", settings.filterBy)
             return true;
         } else {
+            console.log("false filterBy", settings.filterBy)
             return false;
         }
     }
@@ -153,9 +155,10 @@ function setSort(sortedBy) {
 function sortBy() {
 
     if (settings.sortedBy === "firstname") {
-        console.log("return first name");
+        console.log("return by first name");
         return allStudents.sort(sortByFirstName);
     } else if (settings.sortedBy === "lastname") {
+        console.log("return by last name")
         return allStudents.sort(sortByLastName);
     }
 }
