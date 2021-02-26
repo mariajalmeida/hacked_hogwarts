@@ -71,7 +71,13 @@
             <h2>Gender</h2>
             <h2>House</h2>
         </div>
-        <div class="list"></div>
+        <div class="expelled_list">
+            <h1>Expelled list</h1>
+            <div class="students"></div>
+        </div>
+        <h1>Students list</h1>
+        <div class="list">
+        </div>
     </main>
 
     <template id="list">
@@ -129,7 +135,18 @@
             </div>
         </div>
     </template>
+    <template id="expelled_list">
+        <div class="student">
+            <div class="image"><img src="" alt=""></div>
+            <div class="fullname"></div>
+            <div class="gender"></div>
+            <div class="house"></div>
 
+            <button data-field="prefect" data-prefect="false">Non-Prefect</button>
+            <button class="non-member">Non-Inquisitorial Squad Member</button>
+            <button data-field="expel" data-expel="true" class="expell">Student expelled</button>
+        </div>
+    </template>
 
 
     <script src="script/data.js"></script>

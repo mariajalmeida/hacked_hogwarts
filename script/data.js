@@ -12,6 +12,7 @@ async function fetchData() {
 }
 
 let allStudents = [];
+let expelledStudents = [];
 
 const settings = {
     filterBy: "all",
@@ -242,25 +243,21 @@ function numberOfStudentsPerHouse(student) {
 
     for (let i = 0; i < finalResultS.length; i++) {
         let text = finalResultS[i];
-        console.log(text.length);
         document.querySelector(".slytherin_tl p").textContent = text.length;
     }
 
     for (let i = 0; i < finalResultGryffindor.length; i++) {
         let text = finalResultGryffindor[i];
-        console.log(text.length);
         document.querySelector(".gryffindor_tl p").textContent = text.length;
     }
 
     for (let i = 0; i < finalResultRavenclaw.length; i++) {
         let text = finalResultRavenclaw[i];
-        console.log(text.length);
         document.querySelector(".ravenclaw_tl p").textContent = text.length;
     }
 
     for (let i = 0; i < finalResultHufflepuff.length; i++) {
         let text = finalResultHufflepuff[i];
-        console.log(text.length);
         document.querySelector(".hufflepuff_tl p").textContent = text.length;
     }
 
@@ -271,6 +268,10 @@ function displaySingleStudent(student) {
     // create clone
     const clone = document.querySelector("#list").content.cloneNode(true);
     numberOfStudentsPerHouse(student);
+
+    const studentCard = clone.querySelector(".student");
+    document.querySelector(".expelled_list").style.display = "none";
+
     // our data
     const images = "./images/" + student.lastName.toLowerCase();
     const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
@@ -304,7 +305,46 @@ function displaySingleStudent(student) {
         } else {
             student.expelStudent = true;
             event.target.textContent = "Student expelled";
+            expelledStudents.push(student);
+            displayExpelledList();
         }
+    }
+
+    function displayExpelledList() {
+        // create clone
+        const clone = document.querySelector("#expelled_list").content.cloneNode(true);
+
+        document.querySelector(".expelled_list").style.display = "block";
+
+        if (student.expelStudent = true) {
+            studentCard.style.display = "none";
+        } else {
+            console.log("ignore");
+        }
+
+        // our data
+        const images = "./images/" + student.lastName.toLowerCase();
+        const img_path = "_" + student.firstName.substring(0, 1).toLowerCase() + ".png";
+
+        // images
+        if (student.firstName === "Justin" || student.firstName === "Padma" || student.firstName === "Parvati" || student.firstName === "Leanne") {
+            clone.querySelector(".image").classList.add("empty");
+            clone.querySelector("img").remove();
+        } else {
+            clone.querySelector("img").src = images + img_path;
+        }
+
+        const fullname = clone.querySelector(".fullname");
+        fullname.textContent = student.firstName + " " + student.middleName + " " + student.lastName;
+
+        const gender = clone.querySelector(".gender");
+        gender.textContent = student.gender;
+
+        const house = clone.querySelector(".house");
+        house.textContent = student.house;
+
+        // append clone to the list
+        document.querySelector(".students").appendChild(clone);
     }
 
     // prefect
