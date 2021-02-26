@@ -26,6 +26,24 @@ function prepareData(data) {
     totalNumberOfStudents()
 }
 
+// search bar
+function mySearchFunction() {
+    let item, textValue;
+    let input = document.getElementById("myInput");
+    let filter = input.value.toUpperCase();
+    let list = document.getElementById("students_list");
+    let li = list.getElementsByClassName("student");
+    for (let i = 0; i < li.length; i++) {
+        item = li[i];
+        textValue = item.textContent || item.innerText;
+        if (textValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
 // here's all the students
 function transcribeData(s) {
     const Student = {

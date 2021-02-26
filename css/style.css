@@ -77,7 +77,7 @@ body {
 .filter_sort {
     display: flex;
     width: 650px;
-    justify-content: flex-end;
+    justify-content: space-evenly;
 }
 
 .filter_sort>div {
