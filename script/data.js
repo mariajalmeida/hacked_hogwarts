@@ -192,14 +192,78 @@ function listOfStudentsDisplayed(students) {
 }
 
 function numberOfStudentsPerHouse(student) {
-    const result = allStudents.filter(student => student)
-    console.log(result);
-    if (student.house === result) {
-        console.log("hey");
-        return result.length;
-    } else {
-        console.log("bye")
+    const resultS = allStudents.filter(isSlytherin);
+    const resultG = allStudents.filter(isGryffindor);
+    const resultR = allStudents.filter(isRavenclaw);
+    const resultH = allStudents.filter(isHufflepuff);
+
+
+    let finalResultS = [];
+    let finalResultGryffindor = [];
+    let finalResultRavenclaw = [];
+    let finalResultHufflepuff = [];
+
+    function isSlytherin(student) {
+        if (student.house === "Slytherin") {
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    function isGryffindor(student) {
+        if (student.house === "Gryffindor") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isRavenclaw(student) {
+        if (student.house === "Ravenclaw") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isHufflepuff(student) {
+        if (student.house === "Hufflepuff") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    finalResultS.push(resultS);
+    finalResultGryffindor.push(resultG);
+    finalResultRavenclaw.push(resultR);
+    finalResultHufflepuff.push(resultH);
+
+    for (let i = 0; i < finalResultS.length; i++) {
+        let text = finalResultS[i];
+        console.log(text.length);
+        document.querySelector(".slytherin_tl p").textContent = text.length;
+    }
+
+    for (let i = 0; i < finalResultGryffindor.length; i++) {
+        let text = finalResultGryffindor[i];
+        console.log(text.length);
+        document.querySelector(".gryffindor_tl p").textContent = text.length;
+    }
+
+    for (let i = 0; i < finalResultRavenclaw.length; i++) {
+        let text = finalResultRavenclaw[i];
+        console.log(text.length);
+        document.querySelector(".ravenclaw_tl p").textContent = text.length;
+    }
+
+    for (let i = 0; i < finalResultHufflepuff.length; i++) {
+        let text = finalResultHufflepuff[i];
+        console.log(text.length);
+        document.querySelector(".hufflepuff_tl p").textContent = text.length;
+    }
+
 }
 
 function displaySingleStudent(student) {
@@ -227,6 +291,7 @@ function displaySingleStudent(student) {
 
     const house = clone.querySelector(".house");
     house.textContent = student.house;
+
 
     // expel student
     clone.querySelector("[data-field=expel]").dataset.expel = student.expelStudent;
