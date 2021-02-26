@@ -396,13 +396,9 @@ function decideAPrefect(selectedStudent) {
     const perHouse = allStudents.filter(student => student.house === selectedStudent.house && student.prefect);
     const perHouseLength = perHouse.length;
 
-    // needs fixing
     if (teammate !== undefined && selectedStudent.house === teammate.house && perHouseLength == 2) {
-        console.log(perHouseLength)
-        console.log(selectedStudent);
         console.log("Two members per house");
         removeOther(teammate);
-        console.log(teammate, "removed teammate")
         alert("Error #4395 \nOnly two prefects per house. \nAnother prefect has been succesfully removed.");
     } else {
         console.log("another one")
@@ -411,18 +407,6 @@ function decideAPrefect(selectedStudent) {
 
     function removeOther(another) {
         removeStudent(another);
-        newAppointedPrefect(selectedStudent);
-    }
-
-    function removeAnotherPrefect(prefectA, prefectB) {
-        console.log(prefectA, prefectA, "STUDENTS?")
-        // inquire the user to choose or keep original
-
-        removeStudent(prefectA);
-        newAppointedPrefect(selectedStudent);
-
-        // if removed
-        removeStudent(prefectB);
         newAppointedPrefect(selectedStudent);
     }
 
