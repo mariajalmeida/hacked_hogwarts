@@ -67,16 +67,23 @@
                 </details>
             </div>
         </div>
+        <div class="expelled_list">
+            <h1>Expelled list</h1>
+            <div class="categories">
+                <h2>Profile photo</h2>
+                <h2>Full name</h2>
+                <h2>Gender</h2>
+                <h2>House</h2>
+            </div>
+            <div class="students"></div>
+        </div>
+        <h1>Students list</h1>
         <div class="categories">
+            <h2>Profile photo</h2>
             <h2>Full name</h2>
             <h2>Gender</h2>
             <h2>House</h2>
         </div>
-        <div class="expelled_list">
-            <h1>Expelled list</h1>
-            <div class="students"></div>
-        </div>
-        <h1>Students list</h1>
         <div class="list">
         </div>
     </main>
@@ -88,9 +95,11 @@
             <div class="gender"></div>
             <div class="house"></div>
 
-            <button data-field="prefect" data-prefect="false">Non-Prefect</button>
-            <button class="non-member">Non-Inquisitorial Squad Member</button>
-            <button data-field="expel" data-expel="false" class="expell">Expel student</button>
+            <div class="buttons">
+                <button data-field="prefect" data-prefect="false">Non-Prefect</button>
+                <button class="non-member">Non-Inquisitorial Squad Member</button>
+                <button data-field="expel" data-expel="false" class="expell">Expel student</button>
+            </div>
         </div>
 
         <div class="modal-background hide">
@@ -126,12 +135,6 @@
                             <p></p>
                         </div>
                     </div>
-
-                    <!-- <div class="buttons">
-                        <button class="expel">Expel student</button>
-                        <button class="non-prefect">Non-Prefect</button>
-                        <button class="non-member">Non-Inquisitorial Squad Member</button>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -143,9 +146,11 @@
             <div class="gender"></div>
             <div class="house"></div>
 
-            <button data-field="prefect" data-prefect="false">Non-Prefect</button>
-            <button class="non-member">Non-Inquisitorial Squad Member</button>
-            <button data-field="expel" data-expel="true" class="expell">Student expelled</button>
+            <div class="buttons">
+                <button data-field="prefect" data-prefect="false">Non-Prefect</button>
+                <button class="non-member">Non-Inquisitorial Squad Member</button>
+                <button data-field="expel" data-expel="true" class="expell">Student expelled</button>
+            </div>
         </div>
     </template>
 
