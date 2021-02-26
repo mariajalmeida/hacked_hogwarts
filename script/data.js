@@ -8,7 +8,6 @@ async function fetchData() {
     const data = await response.json();
 
     prepareData(data);
-    totalNumberOfStudents(data);
 }
 
 let allStudents = [];
@@ -24,6 +23,7 @@ function prepareData(data) {
     allStudents = data.map(transcribeData);
     buildList();
     buttonClicked();
+    totalNumberOfStudents()
 }
 
 // here's all the students
@@ -183,8 +183,8 @@ function displayList(s) {
     listOfStudentsDisplayed(s);
 }
 
-function totalNumberOfStudents(students) {
-    document.querySelector(".students_total p").textContent = students.length;
+function totalNumberOfStudents() {
+    document.querySelector(".students_total p").textContent = allStudents.length;
 }
 
 function listOfStudentsDisplayed(students) {
@@ -307,6 +307,7 @@ function displaySingleStudent(student) {
             event.target.textContent = "Student expelled";
             expelledStudents.push(student);
             document.querySelector(".expelled_students p").textContent = expelledStudents.length;
+            document.querySelector(".students_total p").textContent = allStudents.length - expelledStudents.length;
             displayExpelledList();
         }
     }
