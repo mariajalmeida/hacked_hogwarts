@@ -306,6 +306,7 @@ function displaySingleStudent(student) {
             student.expelStudent = true;
             event.target.textContent = "Student expelled";
             expelledStudents.push(student);
+            document.querySelector(".expelled_students p").textContent = expelledStudents.length;
             displayExpelledList();
         }
     }
