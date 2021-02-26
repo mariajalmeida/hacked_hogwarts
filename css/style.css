@@ -129,7 +129,7 @@ details button {
     transform: translate(-50%, -50%);
     background-color: rgb(14, 74, 165);
     padding: 40px;
-    width: 75%;
+    width: 400px;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 1.4s;
     animation-name: animatetop;
