@@ -326,6 +326,7 @@ function displaySingleStudent(student) {
             expelledStudents.push(student);
             document.querySelector(".expelled_students p").textContent = expelledStudents.length;
             document.querySelector(".students_total p").textContent = allStudents.length - expelledStudents.length;
+            alert(student.firstName + " has been successfully expelled!")
             displayExpelledList();
         }
     }
@@ -370,6 +371,7 @@ function displaySingleStudent(student) {
     // prefect
     if (student.prefect === true) {
         clone.querySelector("[data-field=prefect]").textContent = "Prefect";
+        alert(student.firstName + " has been successfully signed up as a prefect.")
     } else {
         clone.querySelector("[data-field=prefect]").textContent = "Non-Prefect";
     }
@@ -379,6 +381,7 @@ function displaySingleStudent(student) {
     function makePrefect() {
         if (student.prefect === true) {
             student.prefect = false;
+            alert(student.firstName + " has been successfully removed as a prefect.")
         } else {
             decideAPrefect(student);
         }
