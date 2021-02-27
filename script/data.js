@@ -23,7 +23,7 @@ function prepareData(data) {
     allStudents = data.map(transcribeData);
     buildList();
     buttonClicked();
-    totalNumberOfStudents()
+    totalNumberOfStudents();
 }
 
 // search bar
@@ -447,13 +447,13 @@ function openModal(student) {
 
     let banner_img = document.querySelector(".banner img");
     if (student.house === "Ravenclaw") {
-        banner_img.src = "./images/banner_ravenclaw.jpg";
+        banner_img.src = "./images/crest_ravenclaw.png";
     } else if (student.house === "Gryffindor") {
-        banner_img.src = "./images/banner_gryffindor.jpg";
+        banner_img.src = "./images/crest_gryffindor.png";
     } else if (student.house === "Slytherin") {
-        banner_img.src = "./images/banner_slytherin.jpg";
+        banner_img.src = "./images/crest_slytherin.png";
     } else if (student.house === "Hufflepuff") {
-        banner_img.src = "./images/banner_hufflepuff.jpg";
+        banner_img.src = "./images/crest_hufflepuff.png";
     }
 
     const firstName = document.querySelector(".firstname p");
