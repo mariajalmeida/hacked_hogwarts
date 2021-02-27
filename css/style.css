@@ -240,7 +240,7 @@ details button {
 }
 
 .hufflepuff .personal_info h3::first-letter {
-    color: #FFDB00;
+    color: #000000;
 }
 
 .gryffindor .personal_info h3::first-letter {
@@ -249,6 +249,11 @@ details button {
 
 .slytherin .personal_info h3::first-letter {
     color: #000000;
+    font-weight: 900;
+}
+
+.ravenclaw .personal_info h3::first-letter {
+    color: #946B2D;
     font-weight: 900;
 }
 
