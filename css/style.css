@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
 
 body {
     margin: 0;
@@ -19,11 +20,13 @@ body {
 
 .boxes>div {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 40%;
+    width: 45%;
     height: 200px;
     margin: auto;
     background-color: teal;
+    border-radius: 4px;
 }
 
 .expelled_total,
@@ -41,12 +44,22 @@ body {
 
 .total-list-number {
     text-align: center;
-    width: 130px;
+    width: 150px;
+    height: 150px;
     margin: auto;
     margin-right: 20px;
     background-color: rgb(146, 83, 20);
-    padding: 10px;
     border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.total-list-number h2,
+.total-list-number p {
+    margin: 0;
 }
 
 .categories {
@@ -55,12 +68,17 @@ body {
 
 h1 {
     text-align: center;
+    font-family: 'Akaya Telivigala', cursive;
+    text-transform: uppercase;
 }
 
 .categories h2 {
-    width: 200px;
+    width: 270px;
     margin: 0 10px;
     padding: 0px 10px;
+}
+
+h2 {
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -68,6 +86,10 @@ h1 {
     display: flex;
     width: 100%;
     background: rgb(10, 63, 112);
+    font-family: 'Orbitron', sans-serif;
+}
+
+p {
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -99,6 +121,10 @@ h1 {
 .empty {
     width: 108px;
     background-color: rgb(21, 110, 110);
+}
+
+#myInput {
+    border-radius: 20px;
 }
 
 details {
@@ -245,4 +271,7 @@ details button {
     display: block;
     width: 300px;
     cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    padding: 5px;
 }
